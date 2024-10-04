@@ -19,6 +19,14 @@ public class CharacterController : MonoBehaviour
        {
             rigidBody.velocity = Vector2.zero;
             rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-       } 
+       }
+
+        float angle = Vector3.Angle(Vector3.right, rigidBody.velocity);
+        if (rigidBody.velocity.y < 0)
+        {
+            angle = -angle;
+        }
+           
+        transform.eulerAngles = new Vector3(0, 0, angle);
     }
 }
