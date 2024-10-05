@@ -388,6 +388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreen: {fileID: 865195874}
+  scoreUpdate: {fileID: 1889783873}
 --- !u!95 &134696631
 Animator:
   serializedVersion: 5
@@ -2049,8 +2050,8 @@ GameObject:
   - component: {fileID: 1927318704}
   - component: {fileID: 1927318703}
   m_Layer: 0
-  m_Name: UpperCeiling
-  m_TagString: Untagged
+  m_Name: UpperDeathCeiling
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

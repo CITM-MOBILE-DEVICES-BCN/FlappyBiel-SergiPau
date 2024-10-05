@@ -17,12 +17,13 @@ public class CharacterStatus : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.transform.CompareTag("Score"))
         {
             scoreUpdate.ScoreSum();
         }
+
     }
 
 }
