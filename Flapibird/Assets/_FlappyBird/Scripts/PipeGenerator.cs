@@ -17,7 +17,7 @@ public class PipeGenerator : MonoBehaviour
            difficultyManager.OnDifficultyIncrease.AddListener(OnDifficultyIncreased);
         }
         Invoke("CreatePipes", 1);
-        
+       
     }
 
     public void CreatePipes()
