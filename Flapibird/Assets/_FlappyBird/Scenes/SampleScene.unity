@@ -208,7 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bca66329cbfecd74095636a88716b42c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1.125
+  speed: 2.25
   difficultyManager: {fileID: 1471297411}
   rawImage: {fileID: 89621620}
 --- !u!82 &89621623
@@ -1882,14 +1882,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44803cf272d4ff446967ef7246dbe12b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToRepeat: 4
+  timeToRepeat: 2
   pipePrefab:
   - {fileID: 2750930717781994074, guid: a2541d8fe4d05d941bad4344809545e3, type: 3}
   - {fileID: 7400091458861871575, guid: 1a5cc23833d58fb43aac482d4825bb10, type: 3}
   - {fileID: 1016334690554442524, guid: 12d85c59a23e1ee4d85766e173617f5e, type: 3}
   - {fileID: 7414882950039776826, guid: 6a7040eb0e61e87448e1da83b9ae8b37, type: 3}
   - {fileID: 9108498438229636996, guid: 6d8b9244f42b820488677f231143f099, type: 3}
-  speed: 2
+  speed: 4
   difficultyManager: {fileID: 1471297411}
 --- !u!4 &1471297410
 Transform:
