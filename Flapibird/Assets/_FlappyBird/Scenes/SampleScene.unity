@@ -246,6 +246,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidBody: {fileID: 134696626}
   jumpForce: 5
+  maxFallSpeed: -5
+  rotationSpeed: 5
+  jumpCooldown: 0.2
 --- !u!50 &134696626
 Rigidbody2D:
   serializedVersion: 4
@@ -1668,7 +1671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44803cf272d4ff446967ef7246dbe12b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToRepeat: 5
+  timeToRepeat: 4
   pipePrefab:
   - {fileID: 2750930717781994074, guid: a2541d8fe4d05d941bad4344809545e3, type: 3}
   - {fileID: 7400091458861871575, guid: 1a5cc23833d58fb43aac482d4825bb10, type: 3}
