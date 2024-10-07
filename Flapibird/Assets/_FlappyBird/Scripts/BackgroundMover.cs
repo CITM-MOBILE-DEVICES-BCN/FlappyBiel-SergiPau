@@ -26,7 +26,7 @@ public class BackgroundMover : MonoBehaviour
     }
     void OnDifficultyIncreased()
     {
-        speed += 0.26f;
+        speed += 0.26f / 3;
     }
 
 

@@ -23,7 +23,7 @@ public class PipeGenerator : MonoBehaviour
 
     void OnDifficultyIncreased()
     {
-        speed += 0.5f;
+        speed += 0.5f / 3;
         
         if (timeToRepeat >= 2)
         {

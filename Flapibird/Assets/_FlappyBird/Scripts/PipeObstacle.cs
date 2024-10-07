@@ -32,7 +32,7 @@ public class PipeObstacle : MonoBehaviour
 
     void OnDifficultyIncreased()
     {
-        speed += 0.5f;
+        speed += 0.5f / 3;
     }
 
 }

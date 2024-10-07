@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ScoreUpdate : MonoBehaviour
 {
 
-    float score = 0;
+    public int score = 0;
     int difficultyMeter;
     [SerializeField] GameObject pipeGenerator;
 
@@ -31,7 +31,7 @@ public class ScoreUpdate : MonoBehaviour
         {
             score += 1;
             difficultyMeter += 10;
-            if (difficultyMeter >= 30)
+            if (difficultyMeter >= 10)
             {
                 difficultyMeter = 0;
                 pipeGenerator.GetComponent<DifficultyManager>().IncreaseDifficulty();
