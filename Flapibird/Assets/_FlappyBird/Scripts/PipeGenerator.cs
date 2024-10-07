@@ -14,10 +14,10 @@ public class PipeGenerator : MonoBehaviour
         
         if (difficultyManager != null)
         {
-           difficultyManager.OnDifficultyIncrease.AddListener(OnDifficultyIncreased);
+           difficultyManager.onDifficultyIncrease.AddListener(OnDifficultyIncreased);
         }
         //Invoke("CreatePipes", 1);
-        StartCoroutine(ICreatePipes());
+        StartCoroutine(CreatePipes());
     }
 
 
@@ -30,13 +30,14 @@ public class PipeGenerator : MonoBehaviour
             timeToRepeat -= 0.2f;
         }
     }
-    IEnumerator ICreatePipes()
+    IEnumerator CreatePipes()
     {
 
         GameObject pipe = Instantiate(pipePrefab[Random.Range(0, pipePrefab.Length)], transform.position, Quaternion.identity);
         pipe.GetComponent<PipeObstacle>().speed = speed;
         pipe.GetComponent<PipeObstacle>().difficultyManager = difficultyManager;
         yield return new WaitForSeconds(timeToRepeat);
-        StartCoroutine(ICreatePipes());
+        StartCoroutine(CreatePipes());
     }
+
 }

@@ -7,22 +7,20 @@ public class DifficultyManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public UnityEvent OnDifficultyIncrease;
-
-
+    public UnityEvent onDifficultyIncrease;
 
     void Start()
     {
-        if (OnDifficultyIncrease == null)
+        if (onDifficultyIncrease == null)
         {
-            OnDifficultyIncrease = new UnityEvent();
+            onDifficultyIncrease = new UnityEvent();
         }
         
     }
 
     public void IncreaseDifficulty()
     {
-        OnDifficultyIncrease.Invoke();
+        onDifficultyIncrease.Invoke();
     }
 
 }

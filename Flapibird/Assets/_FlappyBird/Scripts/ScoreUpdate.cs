@@ -13,11 +13,6 @@ public class ScoreUpdate : MonoBehaviour
     [SerializeField] GameObject pipeGenerator;
 
     [SerializeField] TMP_Text scoreText;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -37,5 +32,6 @@ public class ScoreUpdate : MonoBehaviour
                 pipeGenerator.GetComponent<DifficultyManager>().IncreaseDifficulty();
             }
         }
-    } 
+    }
+
 }

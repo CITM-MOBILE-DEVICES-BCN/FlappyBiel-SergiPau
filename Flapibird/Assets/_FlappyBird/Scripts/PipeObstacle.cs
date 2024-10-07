@@ -11,14 +11,12 @@ public class PipeObstacle : MonoBehaviour
 
     void Start()
     {
-
         if (difficultyManager != null)
         {
-            difficultyManager.OnDifficultyIncrease.AddListener(OnDifficultyIncreased);
+            difficultyManager.onDifficultyIncrease.AddListener(OnDifficultyIncreased);
         }
       
     }
-
 
     void Update()
     {

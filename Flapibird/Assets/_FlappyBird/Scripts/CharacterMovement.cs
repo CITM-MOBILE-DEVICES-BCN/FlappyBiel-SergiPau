@@ -51,4 +51,5 @@ public class CharacterMovement : MonoBehaviour
             rigidBody.velocity = new Vector2(rigidBody.velocity.x, maxFallSpeed);
         }
     }
+
 }

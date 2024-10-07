@@ -15,7 +15,7 @@ public class BackgroundMover : MonoBehaviour
     {
         if (difficultyManager != null)
         {
-            difficultyManager.OnDifficultyIncrease.AddListener(OnDifficultyIncreased);
+            difficultyManager.onDifficultyIncrease.AddListener(OnDifficultyIncreased);
         }
     }
 
@@ -24,11 +24,10 @@ public class BackgroundMover : MonoBehaviour
     {
         rawImage.uvRect = new Rect(rawImage.uvRect.x + Time.deltaTime * speed / 10,rawImage.uvRect.y,rawImage.uvRect.width,rawImage.uvRect.height);
     }
+
     void OnDifficultyIncreased()
     {
         speed += 0.26f / 3;
     }
-
-
 
 }
