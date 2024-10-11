@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] Rigidbody2D rigidBody;
-    [SerializeField] float jumpForce = 7f;
-    [SerializeField] float maxFallSpeed = -5f;
-    [SerializeField] float rotationSpeed = 5f;
-    [SerializeField] float jumpCooldown = 0.2f;
+    [SerializeField] protected Rigidbody2D rigidBody;
+    [SerializeField] protected float jumpForce = 7f;
+    [SerializeField] protected float maxFallSpeed = -5f;
+    [SerializeField] protected float rotationSpeed = 5f;
+    [SerializeField] protected float jumpCooldown = 0.2f;
     private float nextJumpTime = 0f;
 
-    void Update()
+    private void Awake()
+    {
+        if (PlayerPrefs.GetInt("character") != 0)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+    private void Update()
+    {
+        GetInput();
+    }
+
+    protected void GetInput()
     {
         if ((Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0) && Time.time >= nextJumpTime)
         {
@@ -20,18 +32,18 @@ public class CharacterMovement : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         BirdRotation();
     }
 
-    void Jump()
+    protected void Jump()
     {
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, 0);
         rigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
     }
 
-    void BirdRotation()
+    protected void BirdRotation()
     {
         float angle = 0;
 

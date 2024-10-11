@@ -6,7 +6,7 @@ public class ButtonFunctions : MonoBehaviour
 {
     public void StartGame()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("CharacterSelection");
     }
 
     public void QuitGame()
