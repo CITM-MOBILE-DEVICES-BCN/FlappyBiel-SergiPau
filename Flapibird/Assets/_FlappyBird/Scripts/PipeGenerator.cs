@@ -25,19 +25,22 @@ public class PipeGenerator : MonoBehaviour
     {
         speed += 0.5f / 3;
         
-        if (timeToRepeat >= 2)
+        if (timeToRepeat >= 1)
         {
-            timeToRepeat -= 0.2f;
+            timeToRepeat -= 0.1f;
         }
     }
     IEnumerator CreatePipes()
     {
-
-        GameObject pipe = Instantiate(pipePrefab[Random.Range(0, pipePrefab.Length)], transform.position, Quaternion.identity);
-        pipe.GetComponent<PipeObstacle>().speed = speed;
-        pipe.GetComponent<PipeObstacle>().difficultyManager = difficultyManager;
-        yield return new WaitForSeconds(timeToRepeat);
-        StartCoroutine(CreatePipes());
+        while (Time.deltaTime < 1)
+        {
+            GameObject pipe = Instantiate(pipePrefab[Random.Range(0, pipePrefab.Length)], transform.position, Quaternion.identity);
+            pipe.GetComponent<PipeObstacle>().speed = speed;
+            pipe.GetComponent<PipeObstacle>().difficultyManager = difficultyManager;
+            yield return new WaitForSeconds(timeToRepeat);
+        }
+        
+       
     }
 
 }
