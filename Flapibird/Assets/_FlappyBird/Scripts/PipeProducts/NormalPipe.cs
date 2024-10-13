@@ -4,10 +4,20 @@ using UnityEngine;
 
 class NormalPipe : IPipeBuilder
 {
-    public int SetPattern()
+    private GameObject pipePrefab;
+    private GameObject pipeInstance;
+    private Vector3 position;
+    private Quaternion rotation;
+
+    public NormalPipe(GameObject pipePrefab, Vector3 position, Quaternion rotation)
+    {
+        this.pipePrefab = pipePrefab;
+        this.position = position;   
+        this.rotation = rotation;
+    }
+    public void SetPattern()
     {
         Debug.Log("Normal Pipe Pattern Set");
-        return 0;
     }
 
     public void SetSpecialProperty()
@@ -15,8 +25,14 @@ class NormalPipe : IPipeBuilder
         Debug.Log("Normal Pipe Special Property Set");
     }
 
-    public Color SetColor()
+    public void SetColor()
     {   
-        return Color.white;
+        pipeInstance.GetComponent<Renderer>().material.color = Color.white;
+    }
+
+    public GameObject GetPipe()
+    {
+        pipeInstance = GameObject.Instantiate(pipePrefab, position, rotation);
+        return pipeInstance;
     }
 }

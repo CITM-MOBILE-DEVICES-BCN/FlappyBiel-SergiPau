@@ -9,9 +9,12 @@ public class PipeGenerator : MonoBehaviour
     public float speed = 2;
     public DifficultyManager difficultyManager;
 
+    private PipeBuilderDirector pipeBuilderDirector;
+
     void Start()
     {
-        
+        pipeBuilderDirector = new PipeBuilderDirector();
+
         if (difficultyManager != null)
         {
            difficultyManager.onDifficultyIncrease.AddListener(OnDifficultyIncreased);
@@ -19,7 +22,6 @@ public class PipeGenerator : MonoBehaviour
         //Invoke("CreatePipes", 1);
         StartCoroutine(CreatePipes());
     }
-
 
     void OnDifficultyIncreased()
     {
@@ -30,17 +32,23 @@ public class PipeGenerator : MonoBehaviour
             timeToRepeat -= 0.1f;
         }
     }
+
     IEnumerator CreatePipes()
     {
         while (Time.deltaTime < 1)
         {
-            GameObject pipe = Instantiate(pipePrefab[Random.Range(0, pipePrefab.Length)], transform.position, Quaternion.identity);
+            IPipeBuilder pipeBuilder = new NormalPipe(pipePrefab[Random.Range(0, pipePrefab.Length)], transform.position, Quaternion.identity);
+
+            pipeBuilderDirector.Construct(pipeBuilder);
+
+            GameObject pipe = pipeBuilder.GetPipe();
+
             pipe.GetComponent<PipeObstacle>().speed = speed;
             pipe.GetComponent<PipeObstacle>().difficultyManager = difficultyManager;
+
             yield return new WaitForSeconds(timeToRepeat);
         }
         
-       
     }
 
 }
