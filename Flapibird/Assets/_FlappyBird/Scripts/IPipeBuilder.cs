@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IPipeBuilder 
 {
-    void SetPattern();
+    int SetPattern();
     void SetSpecialProperty();
-    void SetColor();
+    Color SetColor();
 }

@@ -4,9 +4,10 @@ using UnityEngine;
 
 class NormalPipe : IPipeBuilder
 {
-    public void SetPattern()
+    public int SetPattern()
     {
         Debug.Log("Normal Pipe Pattern Set");
+        return 0;
     }
 
     public void SetSpecialProperty()
@@ -14,8 +15,8 @@ class NormalPipe : IPipeBuilder
         Debug.Log("Normal Pipe Special Property Set");
     }
 
-    public void SetColor()
-    {
-        Debug.Log("Normal Pipe Color Set");
+    public Color SetColor()
+    {   
+        return Color.white;
     }
 }
