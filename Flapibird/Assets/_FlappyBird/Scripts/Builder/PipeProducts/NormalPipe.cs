@@ -17,10 +17,6 @@ class NormalPipe : IPipeBuilder
         this.rotation = rotation;
         pipeInstance = GameObject.Instantiate(pipePrefab, position, rotation);
     }
-    public void SetPattern()
-    {
-        Debug.Log("Normal Pipe Pattern Set");
-    }
 
     public void SetSpecialProperty()
     {
@@ -31,7 +27,6 @@ class NormalPipe : IPipeBuilder
     {
         if (pipeInstance == null)
         {
-            Debug.LogError("pipeInstance is not instantiated. Call GetPipe() before SetColor().");
             return;
         }
 
@@ -41,11 +36,6 @@ class NormalPipe : IPipeBuilder
             {
                 pipeInstance.transform.GetChild(i).GetComponent<SpriteRenderer>().color = Color.white;
             }
-            else
-            {
-                pipeInstance.transform.GetChild(i).AddComponent<SpriteRenderer>().color = Color.white;
-            }
-
         }
 
     }

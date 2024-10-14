@@ -19,7 +19,6 @@ public class PipeGenerator : MonoBehaviour
         {
            difficultyManager.onDifficultyIncrease.AddListener(OnDifficultyIncreased);
         }
-        //Invoke("CreatePipes", 1);
         StartCoroutine(CreatePipes());
     }
 
@@ -35,7 +34,7 @@ public class PipeGenerator : MonoBehaviour
 
     IEnumerator CreatePipes()
     {
-        while (Time.deltaTime < 1)
+        while (true)
         {
             
             GameObject pipe;

@@ -17,10 +17,6 @@ public class InvertionPipe : IPipeBuilder
         this.rotation = rotation;
         pipeInstance = GameObject.Instantiate(pipePrefab, position, rotation);
     }
-    public void SetPattern()
-    {
-        Debug.Log("Normal Pipe Pattern Set");
-    }
 
     public void SetSpecialProperty()
     {
@@ -30,7 +26,6 @@ public class InvertionPipe : IPipeBuilder
             {
                 pipeInstance.transform.GetChild(i).tag ="ScoreInvert";
             }
-
         }
     }
 
@@ -38,7 +33,6 @@ public class InvertionPipe : IPipeBuilder
     {
         if (pipeInstance == null)
         {
-            Debug.LogError("pipeInstance is not instantiated. Call GetPipe() before SetColor().");
             return;
         }
 
@@ -48,7 +42,6 @@ public class InvertionPipe : IPipeBuilder
             {
                 pipeInstance.transform.GetChild(i).GetComponent<SpriteRenderer>().color = Color.blue;
             }
-
         }
 
     }

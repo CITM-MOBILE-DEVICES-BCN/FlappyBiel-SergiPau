@@ -4,9 +4,7 @@ using UnityEngine;
 
 public interface IPipeBuilder 
 {
-    void SetPattern();
     void SetSpecialProperty();
     void SetColor();
-
     GameObject GetPipe();
 }

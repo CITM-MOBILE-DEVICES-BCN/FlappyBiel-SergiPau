@@ -17,21 +17,16 @@ class MovingPipe : IPipeBuilder
         this.rotation = rotation;
         pipeInstance = GameObject.Instantiate(pipePrefab, position, rotation);
     }
-    public void SetPattern()
-    {
-        Debug.Log("Moving Pipe Pattern Set");
-    }
 
     public void SetSpecialProperty()
     {
-        pipeInstance.AddComponent<MovePipe>();
+        pipeInstance.AddComponent<MovePipeY>();
     }
 
     public void SetColor()
     {
         if (pipeInstance == null)
         {
-            Debug.LogError("pipeInstance is not instantiated. Call GetPipe() before SetColor().");
             return;
         }
 
@@ -41,11 +36,6 @@ class MovingPipe : IPipeBuilder
             {
                 pipeInstance.transform.GetChild(i).GetComponent<SpriteRenderer>().color = Color.red;
             }
-            else
-            {
-                pipeInstance.transform.GetChild(i).AddComponent<SpriteRenderer>().color = Color.red;
-            }
-
         }
     }
     public GameObject GetPipe()

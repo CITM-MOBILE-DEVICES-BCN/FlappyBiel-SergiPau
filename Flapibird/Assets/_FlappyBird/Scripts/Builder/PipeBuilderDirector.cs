@@ -6,8 +6,8 @@ public class PipeBuilderDirector
 {
     public void Construct(IPipeBuilder builder)
     {
-        builder.SetPattern();
         builder.SetSpecialProperty();
         builder.SetColor();
     }
+
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovePipe : MonoBehaviour
+public class MovePipeY : MonoBehaviour
 {
     float speed; 
     float height = 1.0f;
