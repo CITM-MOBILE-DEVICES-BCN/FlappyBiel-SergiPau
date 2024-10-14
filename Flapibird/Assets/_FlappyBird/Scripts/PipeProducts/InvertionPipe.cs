@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
-class NormalPipe : IPipeBuilder
+public class InvertionPipe : IPipeBuilder
 {
     private GameObject pipePrefab;
     private GameObject pipeInstance;
     private Vector3 position;
     private Quaternion rotation;
 
-    public NormalPipe(GameObject pipePrefab, Vector3 position, Quaternion rotation)
+    public InvertionPipe(GameObject pipePrefab, Vector3 position, Quaternion rotation)
     {
         this.pipePrefab = pipePrefab;
-        this.position = position;   
+        this.position = position;
         this.rotation = rotation;
         pipeInstance = GameObject.Instantiate(pipePrefab, position, rotation);
     }
@@ -24,7 +24,14 @@ class NormalPipe : IPipeBuilder
 
     public void SetSpecialProperty()
     {
-        Debug.Log("Normal Pipe Special Property Set");
+        for (int i = 0; i < pipeInstance.transform.childCount; i++)
+        {
+            if (pipeInstance.transform.GetChild(i).CompareTag("Score"))
+            {
+                pipeInstance.transform.GetChild(i).tag ="ScoreInvert";
+            }
+
+        }
     }
 
     public void SetColor()
@@ -39,11 +46,7 @@ class NormalPipe : IPipeBuilder
         {
             if (pipeInstance.transform.GetChild(i).GetComponent<SpriteRenderer>() != null)
             {
-                pipeInstance.transform.GetChild(i).GetComponent<SpriteRenderer>().color = Color.white;
-            }
-            else
-            {
-                pipeInstance.transform.GetChild(i).AddComponent<SpriteRenderer>().color = Color.white;
+                pipeInstance.transform.GetChild(i).GetComponent<SpriteRenderer>().color = Color.blue;
             }
 
         }

@@ -6,7 +6,7 @@ public class PipeGenerator : MonoBehaviour
 {
     public float timeToRepeat = 5;
     public GameObject[] pipePrefab;
-    public float speed = 2;
+    public float speed = 4;
     public DifficultyManager difficultyManager;
 
     private PipeBuilderDirector pipeBuilderDirector;
@@ -37,14 +37,39 @@ public class PipeGenerator : MonoBehaviour
     {
         while (Time.deltaTime < 1)
         {
-            IPipeBuilder pipeBuilder = new NormalPipe(pipePrefab[Random.Range(0, pipePrefab.Length)], transform.position, Quaternion.identity);
-
-            pipeBuilderDirector.Construct(pipeBuilder);
-
-            GameObject pipe = pipeBuilder.GetPipe();
-
-            pipe.GetComponent<PipeObstacle>().speed = speed;
-            pipe.GetComponent<PipeObstacle>().difficultyManager = difficultyManager;
+            IPipeBuilder pipeBuilder;
+            GameObject pipe;
+            switch (Random.Range(0, 4))
+            {
+                case 0:
+                    pipeBuilder = new NormalPipe(pipePrefab[Random.Range(0, pipePrefab.Length)], transform.position, Quaternion.identity);
+                    pipeBuilderDirector.Construct(pipeBuilder);
+                    pipe = pipeBuilder.GetPipe();
+                    pipe.GetComponent<PipeObstacle>().speed = speed;
+                    pipe.GetComponent<PipeObstacle>().difficultyManager = difficultyManager;
+                    break;
+                case 1:
+                    pipeBuilder = new MovingPipe(pipePrefab[Random.Range(0, pipePrefab.Length)], transform.position, Quaternion.identity);
+                    pipeBuilderDirector.Construct(pipeBuilder);
+                    pipe = pipeBuilder.GetPipe();
+                    pipe.GetComponent<PipeObstacle>().speed = speed;
+                    pipe.GetComponent<PipeObstacle>().difficultyManager = difficultyManager;
+                    break;
+                case 2:
+                    pipeBuilder = new InvertionPipe(pipePrefab[Random.Range(0, pipePrefab.Length)], transform.position, Quaternion.identity);
+                    pipeBuilderDirector.Construct(pipeBuilder);
+                    pipe = pipeBuilder.GetPipe();
+                    pipe.GetComponent<PipeObstacle>().speed = speed;
+                    pipe.GetComponent<PipeObstacle>().difficultyManager = difficultyManager;
+                    break;
+                case 3:
+                    pipeBuilder = new DissapearingPipes(pipePrefab[Random.Range(0, pipePrefab.Length)], transform.position, Quaternion.identity);
+                    pipeBuilderDirector.Construct(pipeBuilder);
+                    pipe = pipeBuilder.GetPipe();
+                    pipe.GetComponent<PipeObstacle>().speed = speed;
+                    pipe.GetComponent<PipeObstacle>().difficultyManager = difficultyManager;
+                    break;
+            }
 
             yield return new WaitForSeconds(timeToRepeat);
         }

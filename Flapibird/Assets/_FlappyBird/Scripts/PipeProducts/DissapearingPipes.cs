@@ -1,19 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-class NormalPipe : IPipeBuilder
+class DissapearingPipes : IPipeBuilder
 {
     private GameObject pipePrefab;
     private GameObject pipeInstance;
     private Vector3 position;
     private Quaternion rotation;
 
-    public NormalPipe(GameObject pipePrefab, Vector3 position, Quaternion rotation)
+    public DissapearingPipes(GameObject pipePrefab, Vector3 position, Quaternion rotation)
     {
         this.pipePrefab = pipePrefab;
-        this.position = position;   
+        this.position = position;
         this.rotation = rotation;
         pipeInstance = GameObject.Instantiate(pipePrefab, position, rotation);
     }
@@ -24,7 +23,13 @@ class NormalPipe : IPipeBuilder
 
     public void SetSpecialProperty()
     {
-        Debug.Log("Normal Pipe Special Property Set");
+       for (int i = 0; i < pipeInstance.transform.childCount; i++)
+       {
+            if (pipeInstance.transform.GetChild(i).GetComponent<SpriteRenderer>() != null)
+            {
+               pipeInstance.transform.GetChild(i).gameObject.AddComponent<PipeDissapear>();
+            }
+       }
     }
 
     public void SetColor()
@@ -39,13 +44,8 @@ class NormalPipe : IPipeBuilder
         {
             if (pipeInstance.transform.GetChild(i).GetComponent<SpriteRenderer>() != null)
             {
-                pipeInstance.transform.GetChild(i).GetComponent<SpriteRenderer>().color = Color.white;
+                pipeInstance.transform.GetChild(i).GetComponent<SpriteRenderer>().color = Color.black;
             }
-            else
-            {
-                pipeInstance.transform.GetChild(i).AddComponent<SpriteRenderer>().color = Color.white;
-            }
-
         }
 
     }

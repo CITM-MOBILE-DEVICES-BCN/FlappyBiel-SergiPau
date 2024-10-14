@@ -41,6 +41,13 @@ public class CharacterStatus : MonoBehaviour
             scoreUpdate.ScoreSum();
         }
 
+        if (collision.transform.CompareTag("ScoreInvert"))
+        {
+            playerSounds.PointCollected();
+            scoreUpdate.ScoreSum();
+            Camera.main.GetComponent<CameraRotator>().Rotate();
+        }
+
     }
 
 }
